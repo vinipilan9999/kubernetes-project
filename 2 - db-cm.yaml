@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-cm
+  labels:
+    app: db
+data:
+  server: mongo-svc
+  base_url: /adm/
+immutable: true
