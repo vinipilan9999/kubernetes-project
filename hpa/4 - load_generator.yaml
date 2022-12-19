@@ -11,4 +11,4 @@ spec:
   - name: alpine
     image: alpine:3.17
     command: ["/bin/sh"]
-    args: ["-c", "while true; do wget http://nginx-svc:80; sleep 0.003;done"]
+    args: ["-c", "while true; do wget http://nginx-hpa-svc:80; sleep 0.003;done"]

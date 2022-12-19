@@ -27,7 +27,8 @@ spec:
                   - webserver      
       containers:
       - name: nginx
-        image: nginx:1.23.2
+        image: web-hpa:1.0
+        imagePullPolicy: Never  
         ports:
         - containerPort: 80
         resources:
@@ -39,10 +40,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-svc
+  name: nginx-hpa-svc
   namespace: nginx-hpa
   labels:
-    app: nginx-svc
+    app: nginx-hpa-svc
 spec:
   type: LoadBalancer
   selector:

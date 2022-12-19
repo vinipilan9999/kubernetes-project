@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HPA</title>
+        <meta charset="UTF-8">
+        <style>
+            html{font-family: "Source Sans Pro", sans-serif;}
+            h1 {background-color: rgb(21, 139, 21);
+                color: white;
+                padding: 2%;}
+            img{display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 20%;
+}
+            #content{margin: 3.5%;}
+        </style>
+    </head>
+    <body>
+        <h1>Projeto 02 - Sistema com Kubernetes</h1>
+        <div id="content">
+            <h2>Teste com HPA</h2>
+            <p>Namespace: nginx-hpa</p>
+            <img src="nginx.jpg" width="50%">
+            <br>
+            <h2>Comandos</h2>
+            <p> kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=5 -n nginx-hpa<br>
+                kubectl get hpa hpa-for-nginx -n nginx-hpa -w</p>
+        </div>
+    </body>
+</html>

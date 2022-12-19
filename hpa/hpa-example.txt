@@ -1,2 +1,0 @@
-kubectl autoscale deployment nginx --cpu-percent=70 --min=2 --max=8 -n hpa-example
-kubectl get hpa nginx -n hpa-example -w

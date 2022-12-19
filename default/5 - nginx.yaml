@@ -26,7 +26,8 @@ spec:
                   - webserver      
       containers:
       - name: nginx
-        image: nginx:1.23.2
+        image: web-home:1.0
+        imagePullPolicy: Never  
         ports:
         - containerPort: 80
 ---
