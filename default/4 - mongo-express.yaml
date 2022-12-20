@@ -29,19 +29,22 @@ spec:
         image: mongo-express:1.0.0-alpha.4
         ports:
         - containerPort: 8081
+        resources:
+          requests:
+            cpu: 0.02
+            memory: 32Mi
+          limits:
+            cpu: 0.150
+            memory: 256Mi
+        volumeMounts:
+        - name: secret-volume
+          readOnly: true
+          mountPath: /etc/secret-volume
         env:
-        - name: ME_CONFIG_MONGODB_ADMINUSERNAME 
-          # valueFrom:
-          #   secretKeyRef:
-          #     name: db-secret
-          #     key: USER_NAME
-          value: "vinipilan"
-        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
-          # valueFrom:
-          #   secretKeyRef:
-          #     name: db-secret
-          #     key: PASSWORD
-          value: "1234"
+        - name: ME_CONFIG_MONGODB_AUTH_USERNAME_FILE 
+          value: /etc/secret-volume/USER_NAME
+        - name: ME_CONFIG_MONGODB_AUTH_PASSWORD_FILE
+          value: /etc/secret-volume/PASSWORD
         - name: ME_CONFIG_MONGODB_SERVER
           valueFrom:
             configMapKeyRef:
@@ -52,7 +55,11 @@ spec:
             configMapKeyRef:
               name: db-cm
               key: base_url
-
+        
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: db-secret
 ---
 
 apiVersion: v1
