@@ -5,14 +5,15 @@
         <meta charset="UTF-8">
         <style>
             html{font-family: "Source Sans Pro", sans-serif;}
+            
             h1 {background-color: rgb(21, 139, 21);
                 color: white;
                 padding: 2%;}
+
             img{display: block;
                 margin-left: auto;
-                margin-right: auto;
-                width: 20%;
-}
+                margin-right: auto;}
+
             #content{margin: 3.5%;}
         </style>
     </head>
@@ -21,7 +22,7 @@
         <div id="content">
             <h2>Teste com HPA</h2>
             <p>Namespace: nginx-hpa</p>
-            <img src="nginx.jpg" width="50%">
+            <img src="nginx.jpg" width="20%">
             <br>
             <h2>Comandos</h2>
             <p> kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=5 -n nginx-hpa<br>
