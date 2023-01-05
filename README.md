@@ -1,21 +1,11 @@
 1. Criar cluster com as configurações do arquivo cluster-config.yaml
 ```kind create cluster --config=cluster-config.yaml```
 
-2. Instalar o NGINX Ingress Controller no cluster via o arquivo ingress-controller-config.sh
-```bash ingress-controller-config.sh```
+2. Criar e instalar as imagens Docker, instalar o NGINX Ingress Controller e o Metrics Server no cluster via o arquivo requirements/configs.sh
+```bash configs.sh```
 
-3. Criar as imagens docker separadas dentro da pasta web-pages-img e em seguida adicioná-las no cluster
-```docker build -t web-home:1.0 .```
-```docker build -t web-hpa:1.0 .```
-```kind load docker-image web-home:1.0```
-```kind laod docker-image web-hpa:1.0```
+3. Criar os componentes da pasta default
 
-4. Instalar o Metric Server
-```kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml```
-*Colocar ```--kubelet-insecure-tls=true``` e ```hostNetwork: true``` se necessário*
+4. Criar os componentes da pasta hpa
 
-5. Criar os componentes da pasta default
-
-6. Criar os componentes da pasta hpa
-
-7. Acessar *localhost*
+5. Acessar *localhost* no navegador

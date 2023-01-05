@@ -16,15 +16,15 @@ spec:
         app: nginx
     spec:
       affinity:
-          nodeAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference:
-                matchExpressions:
-                - key: for
-                  operator: In
-                  values:
-                  - webserver      
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: for
+                operator: In
+                values:
+                - webserver      
       containers:
       - name: nginx
         image: web-hpa:1.0
@@ -33,10 +33,10 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            cpu: 0.015
+            cpu: 0.01
             memory: 16Mi
           limits:
-            cpu: 0.150
+            cpu: 0.02
             memory: 64Mi
 
 ---

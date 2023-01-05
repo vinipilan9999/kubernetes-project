@@ -3,13 +3,14 @@
 #### Create and load the docker images
 docker build -t web-home:1.0 ./web-pages-img/home/
 docker build -t web-hpa:1.0 ./web-pages-img/hpa/
-kind load docker-image web-home:1.0
-kind load docker-image web-hpa:1.0
+kind load docker-image web-home:1.0 --nodes kind-worker,kind-worker2
+kind load docker-image web-hpa:1.0 --nodes kind-worker,kind-worker2
 
-#### Install Metrics Server for HPA
-# kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-# wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-kubectl apply -f components.yaml
+#### Metrics server with Helm
+# kubectl config set-context --current --namespace=kube-system
+# helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server
+# helm upgrade --install metrics-server metrics-server/metrics-server --set hostNetwork.enable=true -f values.yaml
+# kubectl config set-context --current --namespace=default
 
 #### Install NGINX Ingress Controller
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml

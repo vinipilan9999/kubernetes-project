@@ -34,7 +34,3 @@ nodes:
 - role: worker
   labels:
     for: storage
-    
-- role: worker
-  labels:
-    for: storage

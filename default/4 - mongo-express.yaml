@@ -23,7 +23,7 @@ spec:
                 - key: for
                   operator: In
                   values:
-                  - webserver      
+                  - storage      
       containers:
       - name: mongo-express
         image: mongo-express:1.0.0-alpha.4
