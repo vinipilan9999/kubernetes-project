@@ -1,12 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
-  namespace: nginx-hpa
+  name: deploy-nginx
   labels:
     app: nginx
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -16,41 +15,40 @@ spec:
         app: nginx
     spec:
       affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: for
-                operator: In
-                values:
-                - webserver      
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                - key: for
+                  operator: In
+                  values:
+                  - webserver      
       containers:
       - name: nginx
-        image: web-hpa:1.0
+        image: web-home:1.0
         imagePullPolicy: Never  
         ports:
         - containerPort: 80
         resources:
           requests:
-            cpu: 0.01
+            cpu: 0.015
             memory: 16Mi
           limits:
-            cpu: 0.02
+            cpu: 0.150
             memory: 64Mi
-
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-hpa-svc
-  namespace: nginx-hpa
+  name: nginx-svc
   labels:
-    app: nginx-hpa-svc
+    app: nginx-svc
 spec:
   type: LoadBalancer
   selector:
     app: nginx
   ports:
   - port: 80
+    nodePort: 30000

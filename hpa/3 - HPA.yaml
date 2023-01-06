@@ -1,8 +1,8 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-for-nginx
-  namespace: nginx-hpa
+  name: HPA-nginx
+  namespace: hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

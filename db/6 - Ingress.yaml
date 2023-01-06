@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hpa-ingress
-  namespace: nginx-hpa
+  name: default-system-ingress
+  namespace: db
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
@@ -10,9 +10,10 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/hpa"
+        path: "/adm"
         backend:
           service:
-            name: nginx-hpa-svc
+            name: mongo-express-svc
             port:
-              number: 80
+              number: 8081
+

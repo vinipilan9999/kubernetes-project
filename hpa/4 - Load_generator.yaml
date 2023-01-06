@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: load-generator
-  namespace: nginx-hpa
+  name: pod-load-generator
+  namespace: hpa
   labels: 
     app: load-generator
   

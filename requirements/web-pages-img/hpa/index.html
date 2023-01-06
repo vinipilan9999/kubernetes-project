@@ -15,18 +15,22 @@
                 margin-right: auto;}
 
             #content{margin: 3.5%;}
+
+            #estrutura-img{margin-top: 2%;}
         </style>
     </head>
     <body>
         <h1>Projeto 02 - Sistema com Kubernetes</h1>
         <div id="content">
             <h2>Teste com HPA</h2>
-            <p>Namespace: nginx-hpa</p>
+            <p>Namespace: hpa</p>
             <img src="nginx.jpg" width="20%">
             <br>
             <h2>Comandos</h2>
-            <p> kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=5 -n nginx-hpa<br>
-                kubectl get hpa hpa-for-nginx -n nginx-hpa -w</p>
+            <p> kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=10 -n hpa<br>
+                kubectl get hpa hpa-for-nginx -n hpa -w</p>
+
+            <img id="estrutura-img" src="estrutura.jpg" width="45%">
         </div>
     </body>
 </html>

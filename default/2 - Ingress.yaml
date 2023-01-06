@@ -22,11 +22,3 @@ spec:
             name: nginx-svc
             port:
               number: 80
-      - pathType: Prefix
-        path: "/adm"
-        backend:
-          service:
-            name: mongo-express-svc
-            port:
-              number: 8081
-
