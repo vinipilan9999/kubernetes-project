@@ -13,6 +13,6 @@ spec:
         path: "/hpa"
         backend:
           service:
-            name: nginx-hpa-svc
+            name: nginx-svc
             port:
               number: 80
