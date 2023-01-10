@@ -6,7 +6,9 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - http:
+  #- host: projeto02.sistema.com
+  - host: localhost
+    http:
       paths:
       - pathType: Prefix
         path: "/"

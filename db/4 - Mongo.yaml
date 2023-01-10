@@ -14,16 +14,8 @@ spec:
       labels:
         app: mongo
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: for
-                operator: In
-                values:
-                - storage         
+      nodeSelector:
+        for: storage      
       containers:
       - name: mongo
         image: mongo:6.0.3

@@ -15,16 +15,8 @@ spec:
       labels:
         app: mongo-express
     spec:
-      affinity:
-          nodeAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference:
-                matchExpressions:
-                - key: for
-                  operator: In
-                  values:
-                  - storage      
+      nodeSelector:
+        for: storage
       containers:
       - name: mongo-express
         image: mongo-express:1.0.0-alpha.4
