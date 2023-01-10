@@ -15,4 +15,4 @@ spec:
         memory: 256Mi
         cpu: 0.6
     command: ["/bin/sh"]
-    args: ["-c", "while true; do wget http://nginx-hpa-svc:80/hpa/; sleep 0.003; rm index.html; done"]
+    args: ["-c", "while true; do wget http://nginx-svc:80/hpa/; sleep 0.003; rm index.html; done"]
